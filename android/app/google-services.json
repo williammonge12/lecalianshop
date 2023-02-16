@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "55359585325",
+    "project_id": "lecalianproyect",
+    "storage_bucket": "lecalianproyect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55359585325:android:68f8cdc21e5a2437270ca4",
+        "android_client_info": {
+          "package_name": "com.example.exco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55359585325-83vcl9o3g2u9oj8ffd3qtcgudh0rsmlo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzwpF0t0NG3_rnN-_WPcCm3Mg1o2km77I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55359585325-83vcl9o3g2u9oj8ffd3qtcgudh0rsmlo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55359585325:android:f67e2b318a6de982270ca4",
+        "android_client_info": {
+          "package_name": "com.example.lecalianshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55359585325-83vcl9o3g2u9oj8ffd3qtcgudh0rsmlo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzwpF0t0NG3_rnN-_WPcCm3Mg1o2km77I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55359585325-83vcl9o3g2u9oj8ffd3qtcgudh0rsmlo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
