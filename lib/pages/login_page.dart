@@ -64,7 +64,7 @@ class _Login extends State<Login> {
                     fillColor: const Color.fromRGBO(222, 217, 217, 1),
                     suffixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
+                        borderRadius: BorderRadius.circular(11.0)),
                   ),
                 ),
               ),
