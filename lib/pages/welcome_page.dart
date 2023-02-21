@@ -28,7 +28,7 @@ class _WelcomeState extends State<Welcome> {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Icon(icon),
+        child: Icon(icon, color: Colors.white,),
       ),
       onTap: () {},
     );
@@ -45,7 +45,7 @@ class _WelcomeState extends State<Welcome> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _bottomAction(Icons.perm_identity,),
+            _bottomAction(Icons.perm_identity),
             _bottomAction(Icons.public),
             const SizedBox(width: 48.0),
             _bottomAction(Icons.settings),
