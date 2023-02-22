@@ -20,15 +20,21 @@ class _Login extends State<Login> {
   final TextEditingController _contrasenaController = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  bool _contraseniavisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: const Color.fromRGBO(241, 225, 170, 1),
+      backgroundColor: const Color.fromARGB(255, 13, 11, 38),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(
-          horizontal: 50.0,
+          horizontal: 30.0,
           vertical: 70,
         ),
         child: Form(
@@ -41,14 +47,14 @@ class _Login extends State<Login> {
                 style: TextStyle(
                     fontFamily: 'RibeyeMarrow',
                     fontSize: 25.0,
-                    color: Colors.green),
+                    color: Color.fromARGB(255, 91, 235, 68)),
               ),
               const IconContainer(
                 url: 'assets/images/login.png',
               ),
               const Divider(
                 height: 15.0,
-                color: Color.fromRGBO(241, 225, 170, 1),
+                color: Color(0x00F1E0AA),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0),
@@ -56,49 +62,78 @@ class _Login extends State<Login> {
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   enableInteractiveSelection: false,
-                  autofocus: false,
-                  obscureText: false,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     filled: true,
-                    fillColor: const Color.fromRGBO(222, 217, 217, 1),
-                    suffixIcon: const Icon(Icons.email),
+                    fillColor: const Color.fromARGB(255, 222, 217, 217),
+                    prefixIcon: const Icon(Icons.email,
+                        color: Color.fromARGB(255, 13, 11, 38)),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(11.0)),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 95, 231, 250), width: 2),
+                    ),
+                    hintStyle: const TextStyle(
+                      color: Color.fromARGB(255, 96, 86, 86),
+                    ),
                   ),
                 ),
               ),
               const Divider(
                 height: 20.0,
-                color: Color.fromRGBO(241, 225, 170, 1),
+                color: Color(0x00F1E0AA),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: TextField(
                   controller: _contrasenaController,
+                  obscureText: !_contraseniavisible,
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: const Color.fromRGBO(222, 217, 217, 1),
+                    fillColor: const Color.fromARGB(255, 222, 217, 217),
                     hintText: 'Contraseña',
-                    suffixIcon: const Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline_rounded,
+                        color: Color.fromARGB(255, 13, 11, 38)),
+                    suffixIcon: IconButton(
+                      icon: Icon(_contraseniavisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          _contraseniavisible = !_contraseniavisible;
+                        });
+                      },
+                      color: const Color.fromARGB(255, 95, 231, 250),
+                    ),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0)),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 95, 231, 250), width: 2),
+                    ),
+                    hintStyle: const TextStyle(
+                      color: Color.fromARGB(255, 96, 86, 86),
+                    ),
                   ),
                 ),
               ),
               const Divider(
                 height: 30.0,
-                color: Color.fromRGBO(241, 225, 170, 1),
+                color: Color(0x00F1E0AA),
               ),
               SizedBox(
                 width: 235.0,
                 height: 51.0,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (!_emailController.text.contains('@')) {
-                      mostrarSnackBar('Email no correcto', context);
+                    if (_emailController.value.text.isEmpty) {
+                      mostrarSnackBar('Introduzca su Correo', context);
+                    } else if (!_emailController.text.contains('@')) {
+                      mostrarSnackBar('Introduzca un correo valido', context);
+                    } else if (_contrasenaController.value.text.isEmpty) {
+                      mostrarSnackBar('Introduzca la Contraseña', context);
                     } else if (_contrasenaController.text.length < 6) {
                       mostrarSnackBar(
                           'La contraseña debe contener al menos 6 caracteres',
@@ -108,11 +143,11 @@ class _Login extends State<Login> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.cyanAccent[400]),
+                      backgroundColor: const Color.fromARGB(255, 95, 231, 250)),
                   child: const Text(
                     'INICIAR SESIÓN',
                     style: TextStyle(
-                      color: Colors.blueGrey,
+                      color: Color.fromARGB(255, 96, 86, 86),
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
@@ -122,16 +157,16 @@ class _Login extends State<Login> {
               ),
               const Divider(
                 height: 50.0,
-                color: Color.fromRGBO(241, 225, 170, 1),
+                color: Color(0x00F1E0AA),
               ),
               TextButton(
                 onPressed: () => {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Singup()))
                 },
-                child: const Text('¿Si aun no tiene cuenta REGISTRARE',
+                child: const Text('¿Si aun no tiene cuenta REGISTRARE?',
                     style: TextStyle(
-                        color: Colors.blueGrey,
+                        color: Color.fromARGB(255, 255, 252, 252),
                         fontFamily: 'Roboto',
                         fontSize: 12.0)),
               ),
@@ -140,6 +175,13 @@ class _Login extends State<Login> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _contrasenaController.dispose();
+    super.dispose();
   }
 
 // ignore: non_constant_identifier_names
@@ -157,20 +199,13 @@ class _Login extends State<Login> {
             context, MaterialPageRoute(builder: (context) => const Welcome()));
       } on FirebaseAuthException catch (e) {
         if (e.code == "user-not-found") {
-          mostrarSnackBar("Usuario desconocido", context);
+          mostrarSnackBar("Usuario Desconocido", context);
         } else if (e.code == "wrong-password") {
-          mostrarSnackBar("Contraseña incorrecta", context);
+          mostrarSnackBar("Contraseña Incorrecta", context);
         } else {
-          mostrarSnackBar("Lo sentimos, hubo un error", context);
+          mostrarSnackBar("Usuario/Contraseña Incorrectas", context);
         }
       }
     }
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _contrasenaController.dispose();
-    super.dispose();
   }
 }
